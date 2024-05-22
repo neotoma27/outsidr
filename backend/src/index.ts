@@ -1,5 +1,8 @@
-import { PrismaClient } from '@prisma/client'
-import express from 'express'
+import { PrismaClient } from '@prisma/client';
+import express from "express";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const prisma = new PrismaClient();
 const app = express();
@@ -84,6 +87,5 @@ app.delete('/users/:id', async (req, res, next) => {
 });
 
 //Start server
-// const PORT = process.env.PORT || 4000;
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
