@@ -1,11 +1,17 @@
 import { PrismaClient } from '@prisma/client';
 import express from "express";
 import dotenv from "dotenv";
+import { createServer } from 'node:http';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+import { Server } from 'socket.io';
 
 dotenv.config();
 
 const prisma = new PrismaClient();
 const app = express();
+const server = createServer(app);
+const io = new Server(server);
 
 //use json
 app.use(express.json());
